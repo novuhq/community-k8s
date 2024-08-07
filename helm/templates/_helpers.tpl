@@ -26,7 +26,6 @@ Ref: https://cert-manager.io/docs/usage/ingress/#supported-annotations
 {{- end -}}
 {{- end -}}
 
-
 {{/*
 Compile all warnings into a single message.
 */}}
@@ -42,8 +41,6 @@ Compile all warnings into a single message.
 {{- end -}}
 {{- end -}}
 
-
-
 {{/*
 Return the proper api image name
 */}}
@@ -58,7 +55,6 @@ Return the proper image name (for the init container volume-permissions image)
 {{- include "common.images.image" ( dict "imageRoot" "global" .Values.global ) -}}
 {{- end -}}
 
-
 {{/*
 Return the proper worker image name
 */}}
@@ -72,7 +68,6 @@ Return the proper image name (for the init container volume-permissions image)
 {{- define "novu-worker.volumePermissions.image" -}}
 {{- include "common.images.image" ( dict "imageRoot" "global" .Values.global ) -}}
 {{- end -}}
-
 
 {{/*
 Return the proper ws image name
@@ -130,7 +125,6 @@ Return Redis(TM) port
     {{- print .Values.externalRedis.port  -}}
 {{- end -}}
 {{- end -}}
-
 
 {{/*
 Return if Redis(TM) authentication is enabled
@@ -240,7 +234,6 @@ Return mongodb username
 {{- end -}}
 {{- end -}}
 
-
 {{/*
 Return mongodb secretName
 */}}
@@ -254,14 +247,12 @@ Return mongodb secretName
 {{- end -}}
 {{- end -}}
 
-
 {{/*
 Return s3 fullname
 */}}
 {{- define "novu.s3.fullname" -}}
 {{- include "common.names.dependency.fullname" (dict "chartName" "localstack" "chartValues" .Values.localstack "context" $) -}}
 {{- end -}}
-
 
 {{/*
 Return s3 bucket name

@@ -1,4 +1,4 @@
-<!--- app-name: Keycloak -->
+<!--- app-name: Novu -->
 
 # Novu Helm Chart
 
@@ -31,7 +31,7 @@ To install the chart with the release name `my-novu`:
 helm install my-novu ./ --set store.encryptionKey=$(openssl rand -base64 32)
 ```
 
-These commands deploy a Keycloak application on the Kubernetes cluster in the default configuration.
+These commands deploy a Novu application on the Kubernetes cluster in the default configuration.
 
 > **Tip**: List all releases using `helm list`
 

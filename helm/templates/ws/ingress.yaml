@@ -2,7 +2,7 @@
 apiVersion: {{ include "common.capabilities.ingress.apiVersion" . }}
 kind: Ingress
 metadata:
-  name: {{ printf "%s-%s" .Release.Name "ws"  }}
+  name: {{ include "novu-ws.fullname" . }}
   namespace: {{ include "common.names.namespace" . | quote }}
   labels: {{- include "common.labels.standard" . | nindent 4 }}
     {{- if .Values.commonLabels }}
@@ -31,7 +31,7 @@ spec:
             {{- if eq "true" (include "common.ingress.supportsPathType" .) }}
             pathType: {{ .Values.ws.ingress.pathType }}
             {{- end }}
-            backend: {{- include "common.ingress.backend" (dict "serviceName"  (printf "%s-%s" .Release.Name "ws")  "servicePort" "http" "context" $)  | nindent 14 }}
+            backend: {{- include "common.ingress.backend" (dict "serviceName"  (include "novu-ws.fullname")  "servicePort" "http" "context" $)  | nindent 14 }}
     {{- end }}
     {{- range .Values.ws.ingress.extraHosts }}
     - host: {{ include "common.tplvalues.render" ( dict "value" .name "context" $ ) }}
@@ -41,7 +41,7 @@ spec:
             {{- if eq "true" (include "common.ingress.supportsPathType" $) }}
             pathType: {{ default "ImplementationSpecific" .pathType }}
             {{- end }}
-            backend: {{- include "common.ingress.backend" (dict "serviceName"  (printf "%s-%s" .Release.Name "ws")  "servicePort" "http" "context" $) | nindent 14 }}
+            backend: {{- include "common.ingress.backend" (dict "serviceName"  (include "novu-ws.fullname")  "servicePort" "http" "context" $) | nindent 14 }}
     {{- end }}
     {{- if .Values.ws.ingress.extraRules }}
     {{- include "common.tplvalues.render" (dict "value" .Values.ws.ingress.extraRules "context" $) | nindent 4 }}

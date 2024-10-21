@@ -43,6 +43,12 @@ Compile all warnings into a single message.
 {{- end -}}
 
 
+{{/*
+Return Novu API deployment full name
+*/}}
+{{- define "novu-api.fullname" -}}
+{{- printf "%s-%s" (include "common.names.fullname" .) "api" -}}
+{{- end -}}
 
 {{/*
 Return the proper api image name
@@ -58,7 +64,12 @@ Return the proper image name (for the init container volume-permissions image)
 {{- include "common.images.image" ( dict "imageRoot" "global" .Values.global ) -}}
 {{- end -}}
 
-
+{{/*
+Return Novu Worker deployment full name
+*/}}
+{{- define "novu-worker.fullname" -}}
+{{- printf "%s-%s" (include "common.names.fullname" .) "worker" -}}
+{{- end -}}
 {{/*
 Return the proper worker image name
 */}}
@@ -73,7 +84,12 @@ Return the proper image name (for the init container volume-permissions image)
 {{- include "common.images.image" ( dict "imageRoot" "global" .Values.global ) -}}
 {{- end -}}
 
-
+{{/*
+Return Novu web service deployment full name
+*/}}
+{{- define "novu-ws.fullname" -}}
+{{- printf "%s-%s" (include "common.names.fullname" .) "ws" -}}
+{{- end -}}
 {{/*
 Return the proper ws image name
 */}}
@@ -88,6 +104,12 @@ Return the proper image name (for the init container volume-permissions image)
 {{- include "common.images.image" ( dict "imageRoot" "global" .Values.global ) -}}
 {{- end -}}
 
+{{/*
+Return Novu web service deployment full name
+*/}}
+{{- define "novu-web.fullname" -}}
+{{- printf "%s-%s" (include "common.names.fullname" .) "web" -}}
+{{- end -}}
 {{/*
 Return the proper web image name
 */}}

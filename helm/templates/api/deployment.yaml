@@ -140,6 +140,11 @@ spec:
             - name: GOOGLE_APPLICATION_CREDENTIALS
               value: {{ .Values.externalS3.googleApplicationCredentials | quote }}
             {{- else }}
+            - name: S3_LOCAL_STACK
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "novu.s3.secretName" . }}
+                  key: endpoint
             - name: S3_BUCKET_NAME
               valueFrom :
                 secretKeyRef:
